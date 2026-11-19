@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 340" role="img" aria-labelledby="title desc">
+  <title id="title">ForgeOS — Pratham Forge Labs</title>
+  <desc id="desc">A charcoal engineering banner with electric blue and cyan accents, a subtle moving orbit, and the words AI Engineer and Software Engineer.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b0f14" />
+      <stop offset="1" stop-color="#101b29" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#3b82f6" />
+      <stop offset="1" stop-color="#67e8f9" />
+    </linearGradient>
+    <radialGradient id="aura">
+      <stop offset="0" stop-color="#0e7490" stop-opacity=".44" />
+      <stop offset="1" stop-color="#0e7490" stop-opacity="0" />
+    </radialGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0v32" fill="none" stroke="#45627f" stroke-opacity=".16" stroke-width="1" />
+    </pattern>
+    <style>
+      @keyframes forge-orbit { to { transform: rotate(360deg); } }
+      @keyframes forge-pulse { 0%, 100% { opacity: .42; } 50% { opacity: .9; } }
+      @keyframes forge-scan { 0%, 100% { opacity: .08; transform: translateX(0); } 50% { opacity: .38; transform: translateX(24px); } }
+      .orbit { transform-box: view-box; transform-origin: 971px 171px; animation: forge-orbit 34s linear infinite; }
+      .pulse { animation: forge-pulse 4s ease-in-out infinite; }
+      .scan { animation: forge-scan 7s ease-in-out infinite; }
+      @media (prefers-reduced-motion: reduce) { .orbit, .pulse, .scan { animation: none !important; } }
+    </style>
+  </defs>
+  <rect x="1" y="1" width="1198" height="338" rx="24" fill="url(#background)" stroke="#25374a" stroke-width="2" />
+  <rect x="2" y="2" width="1196" height="336" rx="23" fill="url(#grid)" />
+  <ellipse cx="975" cy="171" rx="260" ry="235" fill="url(#aura)" />
+  <path d="M62 92h78" stroke="url(#accent)" stroke-width="3" stroke-linecap="round" />
+  <circle class="pulse" cx="148" cy="92" r="4" fill="#67e8f9" />
+  <text x="62" y="75" fill="#a5c9e8" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="600" letter-spacing="3">PRATHAM FORGE LABS / 01</text>
+  <text x="62" y="151" fill="#f2f7fc" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="54" font-weight="750" letter-spacing="-1.5">Build ideas into</text>
+  <text x="62" y="210" fill="url(#accent)" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="54" font-weight="750" letter-spacing="-1.5">engineered systems.</text>
+  <text x="66" y="256" fill="#d0dfed" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="17" font-weight="600" letter-spacing="1.2">AI ENGINEER  /  SOFTWARE ENGINEER</text>
+  <text x="66" y="293" fill="#8ba5bd" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="13" letter-spacing="2">LLM EVALUATION  ·  CLOUD SYSTEMS  ·  APPLIED AI</text>
+  <g opacity=".86">
+    <circle cx="971" cy="171" r="112" fill="#0b1119" fill-opacity=".62" stroke="#294663" stroke-width="1.5" />
+    <circle class="pulse" cx="971" cy="171" r="83" fill="none" stroke="#3284c6" stroke-opacity=".45" stroke-width="1.5" />
+    <g class="orbit">
+      <ellipse cx="971" cy="171" rx="147" ry="49" transform="rotate(-34 971 171)" fill="none" stroke="url(#accent)" stroke-opacity=".78" stroke-width="1.5" />
+      <circle cx="1092" cy="93" r="5" fill="#67e8f9" />
+    </g>
+    <path d="M971 112 1022 141v60l-51 30-51-30v-60z" fill="#101b28" stroke="url(#accent)" stroke-width="2.5" stroke-linejoin="round" />
+    <path d="M946 146h49l-10 13h-24v12h23l-10 13h-13v24h-15z" fill="#e6f7ff" />
+    <path class="scan" d="M890 170h162" stroke="#67e8f9" stroke-width="1" />
+    <text x="971" y="281" fill="#b8cce0" text-anchor="middle" font-family="Inter, ui-sans-serif, system-ui, sans-serif" font-size="12" letter-spacing="3">FORGEOS / SYSTEM PROFILE</text>
+  </g>
+  <path d="M1111 56v24m-12-12h24" stroke="#4da6d9" stroke-opacity=".7" stroke-width="1.5" stroke-linecap="round" />
+  <circle cx="1123" cy="269" r="2" fill="#67e8f9" />
+</svg>

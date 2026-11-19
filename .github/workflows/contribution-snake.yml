@@ -1,0 +1,68 @@
+name: Refresh profile visuals
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "assets/github-stats.svg"
+  schedule:
+    - cron: "23 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-visuals
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out profile repository
+        uses: actions/checkout@v6
+
+      - name: Generate public GitHub stats card
+        id: stats
+        uses: stats-organization/github-readme-stats-action@v2
+        continue-on-error: true
+        with:
+          card: stats
+          options: username=prathamforgelab&show_icons=true&hide_rank=true&hide_border=true&bg_color=0B0F14&title_color=58A6FF&text_color=C9D1D9&icon_color=22D3EE
+          path: assets/github-stats.svg
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fail_on_error: true
+
+      - name: Commit refreshed stats card
+        if: steps.stats.outcome == 'success'
+        shell: bash
+        run: |
+          git add assets/github-stats.svg
+          if git diff --cached --quiet; then
+            echo "Stats card is unchanged."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "chore: refresh profile stats"
+            git push
+          fi
+
+      - name: Generate contribution snake SVGs
+        uses: Platane/snk@v3
+        with:
+          github_user_name: prathamforgelab
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          outputs: |
+            dist/github-contribution-grid-snake.svg?color_snake=%2358a6ff&color_dots=%23f0f3f7,%23dbeafe,%2393c5fd,%233b82f6,%231d4ed8
+            dist/github-contribution-grid-snake-dark.svg?palette=github-dark&color_snake=%2367e8f9&color_dots=%230d1117,%23142435,%231f4f72,%232f8fce,%2367e8f9
+
+      - name: Publish contribution snake to the output branch
+        uses: crazy-max/ghaction-github-pages@v4
+        with:
+          target_branch: output
+          build_dir: dist
+          keep_history: true
+          allow_empty_commit: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
